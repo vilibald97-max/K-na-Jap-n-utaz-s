@@ -1,0 +1,873 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Kína és Japán utazás 2026 – közös, egyoldalas útiterv Pekinggel, Tokióval, Kiotóval és Shanghaijal.">
+  <meta name="theme-color" content="#9f2030">
+  <title>Kína és Japán 2026 · Útiterv</title>
+  <style>
+    :root {
+      --paper: #f8f3e9;
+      --paper-2: #fffdf8;
+      --ink: #20242a;
+      --muted: #626a73;
+      --line: #ded7ca;
+      --red: #9f2030;
+      --red-deep: #741321;
+      --jade: #18746a;
+      --blue: #245a7a;
+      --gold: #b98022;
+      --shadow: 0 16px 50px rgba(52, 37, 21, .10);
+      --radius: 22px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 126px; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 4%, rgba(159,32,48,.09), transparent 28rem),
+        radial-gradient(circle at 95% 15%, rgba(24,116,106,.08), transparent 30rem),
+        var(--paper);
+      line-height: 1.55;
+    }
+    a { color: inherit; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    .container { width: min(calc(100% - 32px), var(--max)); margin-inline: auto; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(116,19,33,.12);
+      background: rgba(248,243,233,.88);
+      backdrop-filter: blur(18px);
+    }
+    .header-row {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; font-weight: 850; letter-spacing: -.02em; }
+    .brand-mark {
+      width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center;
+      color: #fff; background: linear-gradient(135deg, var(--red), var(--jade)); box-shadow: 0 8px 20px rgba(159,32,48,.22);
+    }
+    .top-nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    .top-nav a {
+      text-decoration: none; color: var(--muted); font-weight: 700; font-size: .93rem;
+      padding: 9px 12px; border-radius: 999px;
+    }
+    .top-nav a:hover, .top-nav a:focus-visible { color: var(--red-deep); background: rgba(159,32,48,.08); outline: none; }
+
+    .hero { padding: 64px 0 32px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px; padding: 7px 11px; border: 1px solid rgba(159,32,48,.18);
+      background: rgba(255,255,255,.56); border-radius: 999px; color: var(--red-deep); font-weight: 800; font-size: .88rem;
+    }
+    h1 { font-size: clamp(2.6rem, 8vw, 6.2rem); line-height: .94; letter-spacing: -.065em; margin: 22px 0 18px; max-width: 980px; }
+    .hero-copy { max-width: 760px; font-size: clamp(1.06rem, 2vw, 1.28rem); color: var(--muted); margin: 0; }
+    .route-line { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 28px; }
+    .route-city { padding: 10px 14px; border-radius: 999px; background: var(--paper-2); border: 1px solid var(--line); font-weight: 800; box-shadow: 0 6px 16px rgba(52,37,21,.05); }
+    .route-arrow { color: var(--gold); font-weight: 900; }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px; align-items: stretch; margin-top: 34px; }
+    .route-card, .countdown-card {
+      border-radius: var(--radius); border: 1px solid rgba(116,19,33,.12); background: rgba(255,253,248,.86); box-shadow: var(--shadow);
+    }
+    .route-card { padding: 24px; position: relative; overflow: hidden; min-height: 260px; }
+    .route-card::after { content:""; position:absolute; width:220px; height:220px; border-radius:50%; right:-80px; top:-100px; background:rgba(24,116,106,.08); }
+    .route-map { width: 100%; height: 210px; display: block; }
+    .route-label { font-size: 13px; font-weight: 850; fill: var(--ink); }
+    .countdown-card { padding: 26px; display: flex; flex-direction: column; justify-content: space-between; background: linear-gradient(145deg, var(--red-deep), #9f2030 55%, #bd4b3c); color: white; }
+    .countdown-card .small { opacity: .78; text-transform: uppercase; letter-spacing: .13em; font-size: .76rem; font-weight: 850; }
+    .countdown-card strong { display:block; font-size: clamp(2rem, 5vw, 4.4rem); line-height: 1; margin-top: 8px; letter-spacing: -.05em; }
+    .countdown-card p { margin: 16px 0 0; opacity: .9; }
+
+    .stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin: 24px auto 54px; }
+    .stat { padding: 18px; border-radius: 18px; background: rgba(255,253,248,.75); border: 1px solid var(--line); }
+    .stat strong { display:block; font-size: 1.65rem; line-height: 1; margin-bottom: 8px; letter-spacing: -.03em; }
+    .stat span { color: var(--muted); font-size: .9rem; font-weight: 650; }
+
+    section { padding: 42px 0; }
+    .section-heading { display: flex; justify-content: space-between; gap: 20px; align-items: end; margin-bottom: 22px; }
+    .section-heading h2 { margin: 0; font-size: clamp(2rem, 5vw, 3.6rem); letter-spacing: -.045em; line-height: 1; }
+    .section-heading p { color: var(--muted); max-width: 650px; margin: 8px 0 0; }
+
+    .controls-wrap {
+      position: sticky; top: 72px; z-index: 40; background: rgba(248,243,233,.92); backdrop-filter: blur(14px);
+      border-block: 1px solid rgba(116,19,33,.10); padding: 11px 0;
+    }
+    .controls { display: flex; gap: 10px; align-items: center; overflow-x: auto; scrollbar-width: none; }
+    .controls::-webkit-scrollbar { display: none; }
+    .filter-btn, .utility-btn {
+      flex: 0 0 auto; border: 1px solid var(--line); background: var(--paper-2); color: var(--muted); border-radius: 999px;
+      padding: 9px 13px; font-weight: 800; font-size: .9rem;
+    }
+    .filter-btn.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .utility-btn { margin-left: auto; color: var(--red-deep); }
+    .utility-btn + .utility-btn { margin-left: 0; }
+
+    .date-jump { display: flex; gap: 8px; overflow-x: auto; padding: 14px 0 2px; scrollbar-width: thin; }
+    .date-jump a { flex: 0 0 auto; min-width: 62px; text-align: center; text-decoration: none; border: 1px solid var(--line); background: rgba(255,253,248,.7); border-radius: 14px; padding: 8px 10px; }
+    .date-jump b { display:block; font-size: .8rem; }
+    .date-jump span { font-size: .72rem; color: var(--muted); }
+
+    .timeline { position: relative; margin-top: 26px; }
+    .timeline::before { content:""; position:absolute; left: 30px; top: 12px; bottom: 12px; width: 2px; background: linear-gradient(var(--red), var(--jade)); opacity: .25; }
+    .day-card {
+      position: relative; margin: 0 0 20px 70px; border-radius: var(--radius); border: 1px solid var(--line); background: rgba(255,253,248,.92); box-shadow: 0 10px 30px rgba(52,37,21,.06); overflow: clip;
+    }
+    .day-card[hidden] { display: none; }
+    .day-card::before {
+      content:""; position:absolute; left:-52px; top: 27px; width: 16px; height:16px; border-radius:50%; background: var(--paper); border: 5px solid var(--red); box-shadow: 0 0 0 6px var(--paper);
+    }
+    .day-card[data-city="tokio"]::before, .day-card[data-city="kioto"]::before { border-color: var(--jade); }
+    .day-card[data-city="shanghai"]::before { border-color: var(--blue); }
+    .day-card[data-city="utazas"]::before { border-color: var(--gold); }
+    .day-card summary { list-style: none; cursor: pointer; padding: 22px 58px 20px 24px; position: relative; }
+    .day-card summary::-webkit-details-marker { display:none; }
+    .day-card summary::after { content:"＋"; position:absolute; right:22px; top:50%; transform:translateY(-50%); font-size:1.4rem; color:var(--muted); }
+    .day-card[open] summary::after { content:"−"; }
+    .day-top { display:flex; justify-content:space-between; gap:16px; align-items:flex-start; }
+    .day-date { font-weight: 900; color: var(--red-deep); text-transform: uppercase; letter-spacing: .1em; font-size: .78rem; }
+    .day-card[data-city="tokio"] .day-date, .day-card[data-city="kioto"] .day-date { color: var(--jade); }
+    .day-card[data-city="shanghai"] .day-date { color: var(--blue); }
+    .day-card[data-city="utazas"] .day-date { color: #8a5e16; }
+    .day-title { font-size: clamp(1.25rem, 3vw, 1.8rem); font-weight: 900; letter-spacing: -.025em; margin-top: 4px; }
+    .chips { display:flex; flex-wrap:wrap; gap:7px; margin-top:12px; }
+    .chip { border-radius:999px; background:#f2ece1; padding:5px 9px; font-size:.75rem; font-weight:800; color:var(--muted); }
+    .day-body { border-top:1px solid var(--line); padding: 22px 24px 26px; display:grid; grid-template-columns: minmax(0,1.4fr) minmax(260px,.6fr); gap:22px; }
+    .schedule-list { display:grid; gap:10px; }
+    .schedule-row { display:grid; grid-template-columns: 82px 34px 1fr; gap:10px; align-items:start; }
+    .schedule-time { font-variant-numeric: tabular-nums; color:var(--muted); font-size:.86rem; font-weight:800; padding-top:7px; }
+    .schedule-icon { width:32px; height:32px; border-radius:11px; display:grid; place-items:center; background:#f1ebe0; }
+    .schedule-content { padding:5px 0 9px; border-bottom:1px dashed #e3dbce; }
+    .schedule-content strong { font-weight:850; }
+    .schedule-content span { display:block; color:var(--muted); font-size:.91rem; margin-top:2px; }
+    .day-aside { display:grid; align-content:start; gap:12px; }
+    .info-box { border-radius:17px; padding:16px; border:1px solid var(--line); background:#fbf7f0; }
+    .info-box h3 { margin:0 0 9px; font-size:.86rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+    .info-box p { margin:0; }
+    .info-box ul { margin:0; padding-left:18px; }
+    .info-box li + li { margin-top:5px; }
+    .note-box { background:rgba(185,128,34,.09); border-color:rgba(185,128,34,.24); }
+    .hotel-box { background:rgba(24,116,106,.07); border-color:rgba(24,116,106,.18); }
+    .food-box { background:rgba(159,32,48,.06); border-color:rgba(159,32,48,.15); }
+
+    .panel-grid { display:grid; grid-template-columns: repeat(12, 1fr); gap:16px; }
+    .panel { border:1px solid var(--line); background:rgba(255,253,248,.86); border-radius:var(--radius); padding:22px; box-shadow:0 8px 26px rgba(52,37,21,.05); }
+    .panel h3 { margin:0 0 14px; font-size:1.25rem; letter-spacing:-.02em; }
+    .panel p { color:var(--muted); }
+    .span-3 { grid-column: span 3; } .span-4 { grid-column: span 4; } .span-5 { grid-column: span 5; } .span-6 { grid-column: span 6; } .span-7 { grid-column: span 7; } .span-8 { grid-column: span 8; } .span-12 { grid-column: span 12; }
+
+    .table-wrap { overflow-x:auto; border:1px solid var(--line); border-radius:16px; background:var(--paper-2); }
+    table { width:100%; border-collapse:collapse; min-width:720px; }
+    th, td { padding:13px 14px; text-align:left; border-bottom:1px solid #ece5d9; vertical-align:top; }
+    th { background:#f2ece2; font-size:.78rem; text-transform:uppercase; letter-spacing:.07em; color:var(--muted); }
+    tbody tr:last-child td { border-bottom:none; }
+    td strong { font-weight:850; }
+
+    .mini-list { display:grid; gap:10px; }
+    .mini-row { display:flex; justify-content:space-between; gap:18px; padding:11px 0; border-bottom:1px dashed var(--line); }
+    .mini-row:last-child { border-bottom:0; }
+    .mini-row span { color:var(--muted); }
+    .badge { display:inline-flex; align-items:center; gap:6px; padding:6px 9px; border-radius:999px; background:#eee6da; font-size:.78rem; font-weight:850; }
+    .badge.good { background:rgba(24,116,106,.12); color:#0d5c54; }
+    .badge.warn { background:rgba(185,128,34,.14); color:#78500f; }
+
+    .weather-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; }
+    .weather-card { padding:16px; border-radius:17px; border:1px solid var(--line); background:var(--paper-2); }
+    .weather-card b { display:block; font-size:1.05rem; }
+    .weather-card strong { display:block; font-size:1.6rem; margin:8px 0 4px; }
+    .weather-card span { color:var(--muted); font-size:.88rem; }
+
+    .checklist { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .check-group { border:1px solid var(--line); background:#fbf7f0; border-radius:17px; padding:17px; }
+    .check-group h4 { margin:0 0 10px; }
+    .check-item { display:flex; align-items:flex-start; gap:9px; padding:7px 0; color:#41464d; }
+    .check-item input { margin-top:4px; accent-color:var(--red); }
+    .check-item.checked span { text-decoration:line-through; color:#92979c; }
+
+    .alert {
+      border:1px solid rgba(185,128,34,.35); background:linear-gradient(135deg, rgba(185,128,34,.10), rgba(255,253,248,.85));
+      border-radius:var(--radius); padding:22px; margin-top:18px;
+    }
+    .alert h3 { margin:0 0 8px; }
+    .alert ul { margin:10px 0 0; padding-left:20px; }
+
+    footer { padding:46px 0 70px; color:var(--muted); }
+    .footer-row { display:flex; justify-content:space-between; gap:20px; border-top:1px solid var(--line); padding-top:24px; }
+    .to-top { text-decoration:none; font-weight:850; color:var(--red-deep); }
+
+    @media (max-width: 920px) {
+      .hero-grid { grid-template-columns:1fr; }
+      .stats { grid-template-columns:repeat(2,1fr); }
+      .stat:last-child { grid-column:1/-1; }
+      .day-body { grid-template-columns:1fr; }
+      .span-3,.span-4,.span-5,.span-6,.span-7,.span-8 { grid-column: span 12; }
+      .weather-grid { grid-template-columns:repeat(2,1fr); }
+      .checklist { grid-template-columns:1fr 1fr; }
+    }
+    @media (max-width: 680px) {
+      .top-nav { display:none; }
+      .hero { padding-top:38px; }
+      .route-card { padding:15px; }
+      .stats { grid-template-columns:1fr 1fr; }
+      .timeline::before { left:12px; }
+      .day-card { margin-left:34px; }
+      .day-card::before { left:-30px; width:12px; height:12px; border-width:4px; }
+      .day-card summary { padding:18px 45px 16px 17px; }
+      .day-body { padding:18px 17px 22px; }
+      .schedule-row { grid-template-columns:66px 30px 1fr; gap:7px; }
+      .schedule-time { font-size:.77rem; }
+      .schedule-icon { width:30px; height:30px; }
+      .weather-grid, .checklist { grid-template-columns:1fr; }
+      .footer-row { flex-direction:column; }
+      .utility-btn { display:none; }
+    }
+
+    @media print {
+      .site-header,.controls-wrap,.date-jump,.utility-btn,.to-top { display:none !important; }
+      body { background:#fff; }
+      .hero { padding-top:18px; }
+      .day-card { break-inside:avoid; box-shadow:none; }
+      .day-card:not([open]) > *:not(summary) { display:block; }
+      .panel { box-shadow:none; break-inside:avoid; }
+    }
+  </style>
+</head>
+<body id="top">
+  <header class="site-header">
+    <div class="container header-row">
+      <a class="brand" href="#top" aria-label="Vissza az oldal tetejére">
+        <span class="brand-mark">旅</span>
+        <span>Kína × Japán 2026</span>
+      </a>
+      <nav class="top-nav" aria-label="Fő navigáció">
+        <a href="#utvonal">Útvonal</a>
+        <a href="#napok">Napi terv</a>
+        <a href="#utazas">Utazás</a>
+        <a href="#praktikus">Praktikus</a>
+        <a href="#csomagolas">Csomagolás</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="utvonal">
+      <div class="container">
+        <span class="eyebrow">🌏 Közös útiterv · 2026. július 19. – augusztus 3.</span>
+        <h1>Kína és Japán,<br>egy útvonalon.</h1>
+        <p class="hero-copy">Peking császári emlékeitől Tokió nyüzsgésén és Kiotó templomain át Shanghai felhőkarcolóiig — minden nap, járat, szálloda és étterem egyetlen könnyen megosztható oldalon.</p>
+
+        <div class="route-line" aria-label="Útvonal">
+          <span class="route-city">Budapest</span><span class="route-arrow">→</span>
+          <span class="route-city">Peking</span><span class="route-arrow">→</span>
+          <span class="route-city">Tokió</span><span class="route-arrow">⇄</span>
+          <span class="route-city">Kiotó</span><span class="route-arrow">→</span>
+          <span class="route-city">Shanghai</span><span class="route-arrow">→</span>
+          <span class="route-city">Peking</span><span class="route-arrow">→</span>
+          <span class="route-city">Budapest</span>
+        </div>
+
+        <div class="hero-grid">
+          <div class="route-card" aria-label="Stilizált útvonaltérkép">
+            <svg class="route-map" viewBox="0 0 760 210" role="img" aria-label="Budapest, Peking, Tokió, Kiotó és Shanghai útvonal">
+              <defs>
+                <linearGradient id="routeGradient" x1="0" x2="1">
+                  <stop offset="0" stop-color="#9f2030"/>
+                  <stop offset=".55" stop-color="#18746a"/>
+                  <stop offset="1" stop-color="#245a7a"/>
+                </linearGradient>
+              </defs>
+              <path d="M60,140 C160,25 250,40 340,104 S525,170 690,70" fill="none" stroke="url(#routeGradient)" stroke-width="5" stroke-linecap="round" stroke-dasharray="9 12"/>
+              <path d="M498,132 C455,195 392,185 420,120" fill="none" stroke="#18746a" stroke-width="4" stroke-linecap="round" stroke-dasharray="7 10"/>
+              <g fill="#fff" stroke-width="5">
+                <circle cx="60" cy="140" r="11" stroke="#9f2030"/><circle cx="300" cy="80" r="11" stroke="#9f2030"/>
+                <circle cx="420" cy="120" r="11" stroke="#18746a"/><circle cx="498" cy="132" r="11" stroke="#18746a"/>
+                <circle cx="595" cy="122" r="11" stroke="#245a7a"/><circle cx="690" cy="70" r="11" stroke="#9f2030"/>
+              </g>
+              <text class="route-label" x="22" y="172">Budapest</text><text class="route-label" x="270" y="52">Peking</text>
+              <text class="route-label" x="394" y="97">Tokió</text><text class="route-label" x="485" y="164">Kiotó</text>
+              <text class="route-label" x="566" y="153">Shanghai</text><text class="route-label" x="662" y="44">Peking</text>
+            </svg>
+          </div>
+          <div class="countdown-card">
+            <div>
+              <span class="small">Az utazás hossza</span>
+              <strong>16 nap</strong>
+              <p>14 éjszaka · 5 repülőjárat · 2 Shinkansen út · 4 fő város</p>
+            </div>
+            <span class="badge" style="align-self:flex-start;background:rgba(255,255,255,.16);color:#fff">✈️ Indulás: BUD · július 19. 13:00</span>
+          </div>
+        </div>
+
+        <div class="stats" aria-label="Utazási összefoglaló">
+          <div class="stat"><strong>5</strong><span>repülőjárat</span></div>
+          <div class="stat"><strong>5</strong><span>szállásfoglalás</span></div>
+          <div class="stat"><strong>2</strong><span>Shinkansen út</span></div>
+          <div class="stat"><strong>4</strong><span>fő úti cél</span></div>
+          <div class="stat"><strong>$2.5–3.5k</strong><span>becsült teljes költségvetés</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="napok" style="padding-top:0">
+      <div class="container section-heading">
+        <div>
+          <h2>Napi útiterv</h2>
+          <p>A kártyákban minden naphoz együtt látható a közlekedés, a szállás, a látnivalók és a dokumentumban megadott étteremajánlás.</p>
+        </div>
+      </div>
+
+      <div class="controls-wrap">
+        <div class="container controls" aria-label="Útiterv szűrők">
+          <button class="filter-btn active" data-filter="all">Mind</button>
+          <button class="filter-btn" data-filter="peking">Peking</button>
+          <button class="filter-btn" data-filter="tokio">Tokió</button>
+          <button class="filter-btn" data-filter="kioto">Kiotó</button>
+          <button class="filter-btn" data-filter="shanghai">Shanghai</button>
+          <button class="filter-btn" data-filter="utazas">Utazás</button>
+          <button class="utility-btn" id="expandAll">Mind kinyitása</button>
+          <button class="utility-btn" id="collapseAll">Mind összecsukása</button>
+        </div>
+      </div>
+
+      <div class="container">
+        <nav class="date-jump" id="dateJump" aria-label="Ugrás egy naphoz"></nav>
+        <div class="timeline" id="timeline"></div>
+      </div>
+    </section>
+
+    <section id="utazas">
+      <div class="container">
+        <div class="section-heading">
+          <div><h2>Utazás és szállások</h2><p>A zárolt járatok, szállodák és a japán vasúti terv egy helyen.</p></div>
+        </div>
+
+        <div class="panel-grid">
+          <div class="panel span-12">
+            <h3>✈️ Repülőjáratok</h3>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>#</th><th>Útvonal</th><th>Dátum</th><th>Indulás</th><th>Érkezés</th><th>Légitársaság</th><th>Járat</th></tr></thead>
+                <tbody>
+                  <tr><td>1</td><td><strong>BUD → PEK</strong></td><td>július 19., vasárnap</td><td>13:00</td><td>04:10 +1</td><td>Air China</td><td>CA720</td></tr>
+                  <tr><td>2</td><td><strong>PEK → HND</strong></td><td>július 24., péntek</td><td>16:20</td><td>20:50</td><td>Japan Airlines</td><td>JL022</td></tr>
+                  <tr><td>3</td><td><strong>HND → PVG</strong></td><td>július 30., csütörtök</td><td>11:40</td><td>14:00</td><td>Japan Airlines</td><td>JL085</td></tr>
+                  <tr><td>4</td><td><strong>SHA → PEK</strong></td><td>augusztus 2., vasárnap</td><td>21:30</td><td>23:55</td><td>Air China</td><td>CA1510</td></tr>
+                  <tr><td>5</td><td><strong>PEK → BUD</strong></td><td>augusztus 3., hétfő</td><td>02:50</td><td>07:00</td><td>Air China</td><td>CA719</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel span-7">
+            <h3>🏨 Szállodák</h3>
+            <div class="table-wrap">
+              <table style="min-width:620px">
+                <thead><tr><th>Város</th><th>Szálloda</th><th>Érkezés</th><th>Távozás</th><th>Éj</th></tr></thead>
+                <tbody>
+                  <tr><td>Peking</td><td><strong>LeafIn Hotel Beijing Wangjing SOHO</strong></td><td>júl. 19.</td><td>júl. 24.</td><td>5</td></tr>
+                  <tr><td>Tokió</td><td><strong>Grand Prince Hotel Takanawa</strong></td><td>júl. 24.</td><td>júl. 26.</td><td>2</td></tr>
+                  <tr><td>Kiotó</td><td><strong>Agora Kyoto Karasuma</strong></td><td>júl. 26.</td><td>júl. 29.</td><td>3</td></tr>
+                  <tr><td>Tokió</td><td><strong>Comfort Hotel Tokyo Kiyosumi Shirakawa</strong></td><td>júl. 29.</td><td>júl. 30.</td><td>1</td></tr>
+                  <tr><td>Shanghai</td><td><strong>Novotel Atlantis Shanghai</strong></td><td>júl. 30.</td><td>aug. 2.</td><td>3</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel span-5">
+            <h3>🚄 Japán vasúti terv</h3>
+            <div class="mini-list">
+              <div class="mini-row"><div><strong>Tokió → Kiotó</strong><br><span>júl. 26. · Nozomi vagy Hikari · ~2–3 óra</span></div><b>~13 500 JPY</b></div>
+              <div class="mini-row"><div><strong>Kiotó → Tokió</strong><br><span>összefoglaló szerint júl. 29. · ~2–3 óra</span></div><b>~13 500 JPY</b></div>
+              <div class="mini-row"><span>2 Shinkansen + helyi közlekedés</span><b>~31 500 JPY</b></div>
+              <div class="mini-row"><span>Dokumentum ajánlása</span><span class="badge good">Egyedi jegyek</span></div>
+            </div>
+            <p style="margin-bottom:0">A dokumentum szerint a 7 és 14 napos JR Pass nem éri meg; az egyedi jegyvásárlás javasolt.</p>
+          </div>
+        </div>
+
+        <div class="alert">
+          <h3>⚠️ Foglalás előtt ellenőrizendő eltérések a tervben</h3>
+          <ul>
+            <li>A szállodatábla és a vasúti összefoglaló július 29-i Kiotó → Tokió utat jelez, míg a részletes napi program július 28-án 18:10-es indulást ír.</li>
+            <li>A zárolt járattábla az augusztus 2-i CA1510 járatnál SHA indulási kódot ad meg, miközben a napi program Pudong repülőtérre történő kiutazást említ.</li>
+          </ul>
+        </div>
+
+        <div class="panel-grid" style="margin-top:18px">
+          <div class="panel span-6">
+            <h3>💴 Japán közlekedési kalkuláció</h3>
+            <div class="mini-list">
+              <div class="mini-row"><span>2 × Shinkansen</span><b>27 000 JPY</b></div>
+              <div class="mini-row"><span>Tokió metró, 3–4 nap</span><b>~3 000 JPY</b></div>
+              <div class="mini-row"><span>Kiotó busz, 3 nap</span><b>~1 500 JPY</b></div>
+              <div class="mini-row"><strong>Dokumentum szerinti teljes összeg</strong><b>~31 500 JPY</b></div>
+              <div class="mini-row"><span>7 napos JR Pass</span><b>~29 650 JPY</b></div>
+              <div class="mini-row"><span>14 napos JR Pass</span><b>~47 250 JPY</b></div>
+            </div>
+          </div>
+          <div class="panel span-6">
+            <h3>💰 Becsült utazási keret</h3>
+            <div class="mini-list">
+              <div class="mini-row"><span>Teljes becsült költségvetés</span><b>~2 500–3 500 USD</b></div>
+              <div class="mini-row"><span>Szállás nélkül</span><b>~1 700–2 300 USD</b></div>
+              <div class="mini-row"><span>Utazás időtartama</span><b>16 nap · 14 éjszaka</b></div>
+            </div>
+            <p style="margin-bottom:0">Az összegek a megadott tervezési dokumentumból származó becslések.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="praktikus">
+      <div class="container">
+        <div class="section-heading"><div><h2>Praktikus tudnivalók</h2><p>Pénz, internet, időjárás, közlekedés, fotóhelyek és vészhelyzeti számok.</p></div></div>
+
+        <div class="panel-grid">
+          <div class="panel span-4">
+            <h3>💳 Pénz és fizetés</h3>
+            <p><strong>Kína:</strong> CNY; WeChat Pay vagy Alipay. ATM-ből könnyű készpénzt felvenni.</p>
+            <p><strong>Japán:</strong> JPY; sok helyen továbbra is készpénz a biztos megoldás.</p>
+            <p style="margin-bottom:0">Visa/Mastercard a nagyobb helyeken mindkét országban elfogadott.</p>
+          </div>
+          <div class="panel span-4">
+            <h3>📱 Internet</h3>
+            <p>Pekingben és Shanghaiban helyi SIM vagy eSIM, Tokióban helyi SIM vagy Pocket WiFi.</p>
+            <span class="badge good">Javasolt: eSIM előrendelés</span>
+          </div>
+          <div class="panel span-4">
+            <h3>🎫 Vonatjegy</h3>
+            <p><a href="https://www.jreast.co.jp/e/" target="_blank" rel="noopener">JR East</a> · Klook app · <a href="https://www.12306.cn" target="_blank" rel="noopener">China Railway 12306</a></p>
+            <p style="margin-bottom:0">Offline: repülőtéri vagy állomási pénztár, illetve hotel concierge.</p>
+          </div>
+
+          <div class="panel span-12">
+            <h3>🌡️ Várható időjárás a dokumentum szerint</h3>
+            <div class="weather-grid">
+              <div class="weather-card"><b>Peking</b><span>júl. 20–24.</span><strong>28–33°C</strong><span>Forró, száraz, erős nap · alacsony csapadék</span></div>
+              <div class="weather-card"><b>Tokió</b><span>júl. 25–26.</span><strong>30–35°C</strong><span>Forró, párás, lehet eső · közepes csapadék</span></div>
+              <div class="weather-card"><b>Kiotó</b><span>júl. 27–28.</span><strong>29–34°C</strong><span>Forró, párás japán nyár · közepes csapadék</span></div>
+              <div class="weather-card"><b>Shanghai</b><span>júl. 31.–aug. 2.</span><strong>28–32°C</strong><span>Forró, párás, lehet zivatar · magas csapadék</span></div>
+              <div class="weather-card"><b>Peking tranzit</b><span>aug. 3.</span><strong>26–30°C</strong><span>Kicsit hűvösebb reggel · alacsony csapadék</span></div>
+            </div>
+          </div>
+
+          <div class="panel span-6">
+            <h3>🚇 Helyi közlekedés</h3>
+            <div class="mini-list">
+              <div class="mini-row"><strong>Peking</strong><span>Metró 2–3 CNY, taxi, Didi</span></div>
+              <div class="mini-row"><strong>Tokió</strong><span>Metró + Suica/Pasmo, vonat, drága taxi</span></div>
+              <div class="mini-row"><strong>Kiotó</strong><span>Elsősorban busz, helyi vonat, taxi</span></div>
+              <div class="mini-row"><strong>Shanghai</strong><span>Metró, taxi, Didi</span></div>
+            </div>
+          </div>
+
+          <div class="panel span-6">
+            <h3>📷 Kiemelt fotóhelyek</h3>
+            <div class="mini-list">
+              <div class="mini-row"><strong>Kínai Nagy Fal</strong><span>Juyongguan</span></div>
+              <div class="mini-row"><strong>Fushimi Inari</strong><span>ezer torii kapu</span></div>
+              <div class="mini-row"><strong>Arashiyama</strong><span>bambuszliget</span></div>
+              <div class="mini-row"><strong>Kinkaku-ji</strong><span>Arany Pavilon</span></div>
+              <div class="mini-row"><strong>Senso-ji</strong><span>esti fények</span></div>
+              <div class="mini-row"><strong>The Bund + Shanghai Tower</strong><span>városi panoráma</span></div>
+            </div>
+          </div>
+
+          <div class="panel span-7">
+            <h3>🆘 Vészhelyzeti kontaktok</h3>
+            <div class="table-wrap">
+              <table style="min-width:560px">
+                <thead><tr><th>Ország</th><th>Típus</th><th>Szám</th></tr></thead>
+                <tbody>
+                  <tr><td>Kína</td><td>Rendőrség</td><td><strong>110</strong></td></tr>
+                  <tr><td>Kína</td><td>Mentő</td><td><strong>120</strong></td></tr>
+                  <tr><td>Japán</td><td>Rendőrség</td><td><strong>110</strong></td></tr>
+                  <tr><td>Japán</td><td>Mentő</td><td><strong>119</strong></td></tr>
+                  <tr><td>Magyar konzulátus, Peking</td><td>Konzuli segítség</td><td><strong>+86-10-6532-7500</strong></td></tr>
+                  <tr><td>Magyar konzulátus, Tokió</td><td>Konzuli segítség</td><td><strong>+81-3-5798-8600</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel span-5">
+            <h3>🛫 Repülőtéri távolságok</h3>
+            <div class="mini-list">
+              <div class="mini-row"><strong>PEK</strong><span>~25 km Pekingtől</span></div>
+              <div class="mini-row"><strong>HND</strong><span>~14 km Tokiótól</span></div>
+              <div class="mini-row"><strong>KIX</strong><span>~75 km Kiotótól</span></div>
+              <div class="mini-row"><strong>PVG</strong><span>~30 km Shanghaitól</span></div>
+            </div>
+          </div>
+
+          <div class="panel span-3">
+            <h3>🇨🇳 Peking · éttermek</h3>
+            <ol>
+              <li>Quanjude Peking Duck</li><li>Li Qun Peking Duck Restaurant</li><li>Dadong Roast Duck</li>
+              <li>Xiabu Xiabu Hot Pot</li><li>Haidilao Hot Pot</li><li>Jing Fang Dim Sum</li>
+            </ol>
+          </div>
+          <div class="panel span-3">
+            <h3>🇯🇵 Tokió · éttermek</h3>
+            <ol>
+              <li>Ichiran Ramen</li><li>Omoide Yokocho</li><li>Tsukiji Sushi</li>
+              <li>Sumo Chanko</li><li>Senso-ji Temple Street</li>
+            </ol>
+          </div>
+          <div class="panel span-3">
+            <h3>🇯🇵 Kiotó · éttermek</h3>
+            <ol>
+              <li>Gion Kappou Nishio</li><li>Kyoto Gogyo</li><li>Hyotei</li><li>Okutan</li><li>Arashiyama Soba</li>
+            </ol>
+          </div>
+          <div class="panel span-3">
+            <h3>🇨🇳 Shanghai · éttermek</h3>
+            <ol>
+              <li>Jia Jia Tang Bao</li><li>Din Tai Fung</li><li>South Beauty</li>
+              <li>Xiabu Xiabu Hot Pot</li><li>Haidilao Hot Pot</li><li>Tsukiji Outer Market*</li>
+            </ol>
+            <p style="font-size:.83rem;margin-bottom:0">*A tervezési dokumentum Shanghai listájában szerepel; helyszíne foglalás előtt ellenőrizendő.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="csomagolas">
+      <div class="container">
+        <div class="section-heading"><div><h2>Csomagolási lista</h2><p>A pipák ebben a böngészőben megmaradnak, így a lista ténylegesen használható indulás előtt.</p></div></div>
+        <div class="checklist" id="packingList"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div><strong>Kína és Japán Utazás 2026</strong><br><span>A megadott útiterv alapján összeállított, GitHub Pages-kompatibilis oldal.</span></div>
+      <a class="to-top" href="#top">Vissza a tetejére ↑</a>
+    </div>
+  </footer>
+
+<script>
+  const days = [
+    {
+      id:'jul19', date:'Július 19.', weekday:'vasárnap', city:'utazas', cityLabel:'Budapest → Peking', title:'Indulás Budapestről', tags:['Repülés','Air China CA720'],
+      hotel:'Éjszaka a repülőn',
+      events:[
+        ['13:00','✈️','Felszállás BUD-ról','Air China CA720 · repülés Peking felé, 11+ óra'],
+        ['út közben','🍽️','Fedélzeti étkezés','Pihenés a hosszú repülés alatt']
+      ],
+      food:['Fedélzeti étkezés'], note:'Érkezés másnap, július 20-án 04:10-kor.'
+    },
+    {
+      id:'jul20', date:'Július 20.', weekday:'hétfő', city:'peking', cityLabel:'Peking', title:'Érkezés és könnyű első nap', tags:['Jet lag-barát','Panjiayuan','Wangjing SOHO'],
+      hotel:'LeafIn Hotel Beijing Wangjing SOHO',
+      events:[
+        ['04:10','🛬','Érkezés Beijing Capital International Airporton','A július 19-i járat másnapi érkezése'],
+        ['05:30','🏨','Hotel check-in','LeafIn Hotel Beijing Wangjing SOHO'],
+        ['06:00–13:00','😴','Pihenő','Regenerálódás a hosszú repülés után'],
+        ['13:00–14:30','🍽️','Ebéd a hotel közelében','Könnyű kezdés'],
+        ['15:00–17:00','🏪','Panjiayuan Antique Market','Első városi felfedezés'],
+        ['18:00–20:00','🌆','Séta a Wangjing SOHO körül','Helyi éttermek felfedezése'],
+        ['20:30','🍜','Vacsora','Helyi szezámleves vagy egyszerű pekingi kacsa'],
+        ['22:00','😴','Pihenő','Korai lezárás a jet lag miatt']
+      ], food:['Helyi szezámleves','Egyszerű pekingi kacsa'], note:'A dokumentum kifejezetten könnyű programot javasol a jet lag miatt.'
+    },
+    {
+      id:'jul21', date:'Július 21.', weekday:'kedd', city:'peking', cityLabel:'Peking', title:'Nagy Fal és a Tiltott Város', tags:['Juyongguan','Tiltott Város','Naplemente'],
+      hotel:'LeafIn Hotel Beijing Wangjing SOHO',
+      events:[
+        ['07:30–08:00','🥐','Reggeli','A hotelben'],
+        ['08:30','🚐','Indulás a Kínai Nagy Falhoz','Juyongguan szakasz, Pekingtől ~50 km'],
+        ['09:00–12:30','🏔️','Kínai Nagy Fal','2–3 órás túra, fotózás, pihenő és snack'],
+        ['13:00–14:00','🍽️','Ebéd','A fal közelében'],
+        ['14:30–16:30','🚐','Visszaút Pekingbe','Érkezés a városba 16:30 körül'],
+        ['17:00–18:30','😴','Pihenő','A hotelben'],
+        ['18:30–20:00','🏯','Tiltott Város vagy Jingshan Park','Esti fények, illetve naplemente a Tiltott Város felett'],
+        ['20:30','🦆','Pekingi kacsa vacsora','Quanjude ajánlott']
+      ], food:['Quanjude Peking Duck','Li Qun Peking Duck Restaurant']
+    },
+    {
+      id:'jul22', date:'Július 22.', weekday:'szerda', city:'peking', cityLabel:'Peking', title:'Nyári Palota, Láma templom és piac', tags:['Summer Palace','Yonghegong','Hot pot'],
+      hotel:'LeafIn Hotel Beijing Wangjing SOHO',
+      events:[
+        ['08:00–09:00','🥐','Reggeli',''],
+        ['09:00–12:00','🏯','Nyári Palota','Kerti séta, tó, pagodák, pavilonok és fotózás'],
+        ['12:30','🍽️','Ebéd','A palota közelében'],
+        ['14:00–16:00','🛕','Láma templom','Yonghegong Lamasery · tibeti buddhista templom'],
+        ['16:30','😴','Pihenő',''],
+        ['17:30–19:00','🏪','Panjiayuan Antique Market','Antik tárgyak, terrakotta figurák, alkudozás'],
+        ['19:30','🍲','Pekingi hot pot vacsora','Közösségi, helyi étkezés']
+      ], food:['Xiabu Xiabu Hot Pot','Haidilao Hot Pot']
+    },
+    {
+      id:'jul23', date:'Július 23.', weekday:'csütörtök', city:'peking', cityLabel:'Peking', title:'Ming sírok, Silk Street és akrobatika', tags:['Changling','Piac','Előadás'],
+      hotel:'LeafIn Hotel Beijing Wangjing SOHO',
+      events:[
+        ['08:30–09:00','🥐','Reggeli',''],
+        ['09:00–12:00','🗿','Ming sírok','Changling Mausoleum, sírdombok és Sárkány út; ~50 km-re északra'],
+        ['12:30','🍽️','Ebéd','Útközben'],
+        ['14:00–17:00','🛍️','Silk Street Market','Ruha, cipő, elektronika és alkudozás'],
+        ['17:30','😴','Pihenő',''],
+        ['18:30–19:30','🎭','Pekingi akrobatika show','Red Theatre · 60 perces tradicionális produkció'],
+        ['20:00','🥟','Vacsora','Utolsó pekingi kacsa vagy dim sum']
+      ], food:['Dadong Roast Duck','Jing Fang Dim Sum']
+    },
+    {
+      id:'jul24', date:'Július 24.', weekday:'péntek', city:'utazas', cityLabel:'Peking → Tokió', title:'Repülés Tokióba', tags:['JL022','PEK → HND','Hotelváltás'],
+      hotel:'Grand Prince Hotel Takanawa',
+      events:[
+        ['09:00–10:00','🥐','Reggeli és utolsó séta','A hotel környékén'],
+        ['10:30','🏨','Check-out','LeafIn Hotel Beijing Wangjing SOHO'],
+        ['11:00','🚕','Utazás a repülőtérre',''],
+        ['12:00–16:00','🛂','Repülőtéri procedúrák','Check-in, biztonsági ellenőrzés, várakozás'],
+        ['16:20','✈️','Felszállás Pekingből','Japan Airlines JL022'],
+        ['20:50','🛬','Érkezés Tokióba','Haneda · 4,5 órás repülés'],
+        ['21:30','🏨','Hotel check-in','Grand Prince Hotel Takanawa'],
+        ['22:00','🍽️','Könnyű vacsora','A hotel éttermében vagy a közelben']
+      ], food:['Könnyű vacsora a hotelben vagy a közelben'], note:'A dokumentum szerint rövid repülés és könnyebb jet lag.'
+    },
+    {
+      id:'jul25', date:'Július 25.', weekday:'szombat', city:'tokio', cityLabel:'Tokió', title:'Harajuku, Meiji szentély és Asakusa', tags:['Meiji Jingu','Harajuku','Senso-ji'],
+      hotel:'Grand Prince Hotel Takanawa',
+      events:[
+        ['08:30–09:00','🥐','Reggeli','A hotelben'],
+        ['09:00–10:00','⛩️','Meiji Shrine','Shinto szentély, erdei séta, csendes környezet'],
+        ['10:30–12:00','🌳','Yoyogi Park','Piknik, helyiek és street food'],
+        ['12:30','🍽️','Ebéd','Street food a parkban vagy a közelben'],
+        ['13:00–15:00','🛍️','Takeshita Street','Harajuku divat, kávézók, sweet shopok, cosplay'],
+        ['15:30–17:00','🏯','Senso-ji Temple','Nakamise shopping street, fotózás'],
+        ['17:30','😴','Pihenő',''],
+        ['18:30–20:00','🍜','Vacsora','Ramen vagy izakaya']
+      ], food:['Ichiran Ramen','Omoide Yokocho']
+    },
+    {
+      id:'jul26', date:'Július 26.', weekday:'vasárnap', city:'utazas', cityLabel:'Tokió → Kiotó', title:'Ginza, Shinkansen és esti Gion', tags:['Ginza','Shinkansen','Gion'],
+      hotel:'Agora Kyoto Karasuma',
+      events:[
+        ['09:00–10:30','🛍️','Ginza Shopping District','Luxusmárkák, neonfények és fotózás'],
+        ['11:00','🏨','Check-out','Grand Prince Hotel Takanawa'],
+        ['11:30–12:50','🚇','Utazás Tokyo Stationre','Taxi vagy metró'],
+        ['13:13','🚄','Tokaido Shinkansen indulása','Nozomi vagy Hikari · Tokió → Kiotó · ~2 óra 15 perc'],
+        ['15:28','🚉','Érkezés Kyoto Stationre','Fuji-hegy kilátás tiszta időben'],
+        ['16:30','🏨','Hotel check-in','Agora Kyoto Karasuma'],
+        ['17:00–18:00','😴','Pihenő',''],
+        ['18:30–20:30','🏮','Gion esti séta','Tradicionális geisha-negyed és hangulatos fotók'],
+        ['20:45','🍱','Kaiseki vacsora','Tradicionális japán többfogásos étkezés']
+      ], food:['Gion Kappou Nishio','Kyoto Gogyo']
+    },
+    {
+      id:'jul27', date:'Július 27.', weekday:'hétfő', city:'kioto', cityLabel:'Kiotó', title:'Fushimi Inari és Arashiyama', tags:['Korai kezdés','Torii kapuk','Bambuszliget'],
+      hotel:'Agora Kyoto Karasuma',
+      events:[
+        ['07:30–08:00','🥐','Könnyű reggeli',''],
+        ['08:15','🚆','Utazás Fushimi Inarihoz','Vonat vagy taxi'],
+        ['08:45–12:00','⛩️','Fushimi Inari Shrine','Ezer torii kapu, hegyoldali túra, fotózás'],
+        ['12:30','🍜','Ebéd','Helyi udon vagy soba'],
+        ['14:00–15:00','🚆','Utazás Arashiyamába',''],
+        ['15:00–16:30','🎋','Arashiyama Bamboo Grove','Bambuszerdő-séta és fotóhelyek'],
+        ['16:45–17:30','🏯','Tenryu-ji Temple','Zen templom, kert és meditáció'],
+        ['18:30–19:30','🥢','Shojin Ryori vacsora','Vegetáriánus buddhista étel']
+      ], food:['Hyotei','Okutan']
+    },
+    {
+      id:'jul28', date:'Július 28.', weekday:'kedd', city:'kioto', cityLabel:'Kiotó → Tokió', title:'Zen kert, Arany Pavilon és vissza Tokióba', tags:['Ryoan-ji','Kinkaku-ji','Shinkansen'],
+      hotel:'Comfort Hotel Tokyo Kiyosumi Shirakawa',
+      events:[
+        ['08:30–09:00','🥐','Reggeli',''],
+        ['09:00–10:30','🪨','Ryoan-ji Temple','Zen kert, 15 kő, meditáció és csend'],
+        ['11:00–12:30','🏯','Kinkaku-ji','Arany Pavilon, tóparti tükröződés és fotózás'],
+        ['13:00','🍽️','Ebéd','Helyi specialitás'],
+        ['14:00–15:30','🚶','Neko no Tera vagy Philosophers Path','Csatornaparti séta, hidak és templomok'],
+        ['16:30','🏨','Check-out','Agora Kyoto Karasuma'],
+        ['18:10','🚄','Tokaido Shinkansen indulása','Kiotó → Tokió · Nozomi vagy Hikari · ~2 óra 15 perc'],
+        ['20:25','🚉','Érkezés Tokyo Stationre',''],
+        ['21:15','🏨','Hotel check-in','Comfort Hotel Tokyo Kiyosumi Shirakawa'],
+        ['21:30','🍽️','Könnyű vacsora','A hotel közelében']
+      ], food:['Hyotei','Okutan','Arashiyama Soba'], note:'A napi program ezt az utat július 28-ra teszi; a szálloda- és vasúti összefoglaló július 29-et ír. Foglalás előtt egyeztetendő.'
+    },
+    {
+      id:'jul29', date:'Július 29.', weekday:'szerda', city:'tokio', cityLabel:'Tokió', title:'Tsukiji, szumó és Akihabara', tags:['Könnyű nap','Piac','Opcionális Akihabara'],
+      hotel:'Comfort Hotel Tokyo Kiyosumi Shirakawa',
+      events:[
+        ['08:30–09:00','🥐','Reggeli',''],
+        ['09:00–11:00','🐟','Tsukiji Outer Market','Sushi, friss seafood és piaci hangulat'],
+        ['11:30–13:00','🍣','Ebéd','Friss sushi vagy ramen'],
+        ['13:30–15:00','🤼','Ryogoku Kokugikan','Szumómúzeum; alternatíva: Tokyo National Museum'],
+        ['15:30–17:00','🛍️','Pihenő és vásárlás','Útközben'],
+        ['17:00–18:00','🎮','Akihabara séta','Elektronika és anime negyed, opcionális'],
+        ['18:30','🍽️','Könnyű vacsora',''],
+        ['19:00','😴','Vissza a szobába','Pihenés és készülődés']
+      ], food:['Tsukiji Sushi','Ichiran Ramen']
+    },
+    {
+      id:'jul30', date:'Július 30.', weekday:'csütörtök', city:'utazas', cityLabel:'Tokió → Shanghai', title:'Repülés Shanghaiba és Yu Garden', tags:['JL085','HND → PVG','Yu Garden'],
+      hotel:'Novotel Atlantis Shanghai',
+      events:[
+        ['08:30–09:00','🥐','Reggeli',''],
+        ['09:30','🏨','Check-out','Comfort Hotel Tokyo Kiyosumi Shirakawa'],
+        ['10:00','🚕','Utazás Haneda repülőtérre',''],
+        ['10:30–11:30','🛂','Repülőtéri procedúrák',''],
+        ['11:40','✈️','Felszállás Tokióból','Japan Airlines JL085'],
+        ['14:00','🛬','Érkezés Shanghaiba','Pudong · 2,5 órás repülés'],
+        ['14:30','🏨','Hotel check-in','Novotel Atlantis Shanghai'],
+        ['15:00–16:00','😴','Pihenő',''],
+        ['16:00–18:00','🌉','Yuyuan Garden','Klasszikus kínai kert, pavilonok, híd, tó'],
+        ['18:00–19:00','🏪','Yu Garden Bazaar','Hagyományos boltok és szuvenírek'],
+        ['19:30','🥟','Vacsora','Shanghai tészta vagy xiaolongbao']
+      ], food:['Jia Jia Tang Bao','South Beauty']
+    },
+    {
+      id:'jul31', date:'Július 31.', weekday:'péntek', city:'shanghai', cityLabel:'Shanghai', title:'The Bund, Shanghai Tower és Nanjing Road', tags:['Vízpart','Panoráma','Vásárlás'],
+      hotel:'Novotel Atlantis Shanghai',
+      events:[
+        ['08:30–09:00','🥐','Reggeli','A hotelben'],
+        ['09:00–11:00','🌉','The Bund','Történelmi vízpart, európai épületek és fotózás'],
+        ['11:30–12:30','🍽️','Ebéd','Helyi seafood vagy shanghai specialitás'],
+        ['13:00–15:00','🏙️','Shanghai Tower','632 m; kilátó a 118. emeleten, 546 m-en'],
+        ['15:30–16:00','😴','Pihenő',''],
+        ['16:00–18:00','🛍️','Nanjing Road','Vásárlás, láncüzletek és luxusmárkák'],
+        ['18:30','🥟','Vacsora','Dim sum vagy hot pot']
+      ], food:['Din Tai Fung','Haidilao Hot Pot']
+    },
+    {
+      id:'aug1', date:'Augusztus 1.', weekday:'szombat', city:'shanghai', cityLabel:'Shanghai', title:'Jade Buddha Temple és Nanjing Road', tags:['Templom','Park','Esti show'],
+      hotel:'Novotel Atlantis Shanghai',
+      events:[
+        ['08:30–09:00','🥐','Reggeli',''],
+        ['09:00–10:30','🏯','Jade Buddha Temple','Két nefrit Buddha-szobor, imák és füstölők'],
+        ['11:00–12:00','🌳','Jing’an Park','Pihenőpark, helyiek, tai chi és tánc'],
+        ['12:30','🍽️','Ebéd','Helyi specialitás'],
+        ['14:00–17:00','🛍️','Nanjing Road East','Luxusmárkák, elektronika és divat'],
+        ['17:30','😴','Pihenő',''],
+        ['18:30–19:30','🎭','Traditional Chinese Medicine Show','Akrobatika, tánc és kínai orvoslás-bemutató'],
+        ['20:00','🍜','Vacsora','Prémium shanghai konyha']
+      ], food:['Xiabu Xiabu Hot Pot','South Beauty']
+    },
+    {
+      id:'aug2', date:'Augusztus 2.', weekday:'vasárnap', city:'utazas', cityLabel:'Shanghai → Peking', title:'Longhua Temple és éjszakai átszállás', tags:['CA1510','Templom','Tranzit'],
+      hotel:'Éjszakai tranzit Pekingben / reptéri lounge',
+      events:[
+        ['08:30–09:00','🥐','Reggeli',''],
+        ['09:00–11:00','🏯','Longhua Temple és Pagoda','Ősi templom, 7 szintű pagoda és helyi zarándokok'],
+        ['11:30–12:30','🍽️','Ebéd','Shanghai specialitás'],
+        ['13:00–14:00','🛍️','Utolsó vásárlás vagy pihenő',''],
+        ['14:30','🏨','Hotel check-out','Novotel Atlantis Shanghai'],
+        ['15:00–16:00','🚕','Utazás a repülőtérre','A napi terv Pudongot említ'],
+        ['16:00–21:00','🛂','Repülőtéri procedúrák','Várakozás'],
+        ['21:30','✈️','Felszállás Shanghaiból','Air China CA1510'],
+        ['23:55','🛬','Érkezés Pekingbe','~2,5 órás repülés'],
+        ['00:30–02:30','😴','Tranzitpihenő','Szoba vagy reptéri lounge, ha elérhető']
+      ], food:['Shanghai specialitás ebédre'], note:'A járattábla SHA indulási kódot, a napi program Pudongra történő kiutazást ír. Ellenőrzendő.'
+    },
+    {
+      id:'aug3', date:'Augusztus 3.', weekday:'hétfő', city:'utazas', cityLabel:'Peking → Budapest', title:'Hazaút', tags:['CA719','PEK → BUD','Érkezés'],
+      hotel:'Hazaérkezés',
+      events:[
+        ['02:00','🛂','Felkészülés a hazaútra','Repülőtéri procedúrák'],
+        ['02:50','✈️','Felszállás Pekingből','Air China CA719 · 11+ óra'],
+        ['07:00','🎉','Érkezés Budapestre','Hazaérkezés']
+      ], food:['Fedélzeti étkezés']
+    }
+  ];
+
+  const packingGroups = {
+    '📄 Dokumentumok': ['Útlevél (érvényes)','Vízum / belépési dokumentumok','Repülő-, vonat- és szállásfoglalások','Utazási biztosítás dokumentumai','Bankkártyák (legalább 2)'],
+    '🔌 Elektronika': ['Telefon + töltő','Laptop/tablet + töltő (opcionális)','Power bank','Univerzális adapter (220V AC)','Fülhallgató'],
+    '👕 Ruházat': ['T-shirt (5–6 db)','Rövidnadrág (2–3 db)','Könnyű hosszúnadrág (2 db)','Könnyű ruha (1–2 db)','Pulóver/sweatshirt az erős klímához','Könnyű kabát/hoodie','Kényelmes cipők','Fehérnemű és zokni (7–8 db)'],
+    '🧴 Higiénia és egészség': ['Fogkefe + fogkrém','Utazó méretű sampon','Dezodor','Naptej SPF 50+','Szúnyogriasztó','Láz-, hasmenés- és fájdalomcsillapító','Szanitáris kellékek'],
+    '🎒 Egyéb': ['Kis hátizsák','Utazási párna','Szemmaszk és füldugó','GoPro vagy kamera (opcionális)','Nemzetközi jogosítvány (opcionális)','Újratölthető italos palack','Napszemüveg és sapka','Könnyű esőkabát']
+  };
+
+  function renderDays() {
+    const timeline = document.getElementById('timeline');
+    const dateJump = document.getElementById('dateJump');
+    timeline.innerHTML = days.map((d, index) => `
+      <details class="day-card" id="${d.id}" data-city="${d.city}" ${index < 2 ? 'open' : ''}>
+        <summary>
+          <div class="day-top">
+            <div>
+              <div class="day-date">${d.date} · ${d.weekday} · ${d.cityLabel}</div>
+              <div class="day-title">${d.title}</div>
+              <div class="chips">${d.tags.map(t=>`<span class="chip">${t}</span>`).join('')}</div>
+            </div>
+          </div>
+        </summary>
+        <div class="day-body">
+          <div class="schedule-list">
+            ${d.events.map(e=>`
+              <div class="schedule-row">
+                <div class="schedule-time">${e[0]}</div>
+                <div class="schedule-icon" aria-hidden="true">${e[1]}</div>
+                <div class="schedule-content"><strong>${e[2]}</strong>${e[3] ? `<span>${e[3]}</span>` : ''}</div>
+              </div>`).join('')}
+          </div>
+          <aside class="day-aside">
+            <div class="info-box hotel-box"><h3>🏨 Szállás</h3><p>${d.hotel}</p></div>
+            <div class="info-box food-box"><h3>🍜 Étterem / étel</h3><ul>${d.food.map(f=>`<li>${f}</li>`).join('')}</ul></div>
+            ${d.note ? `<div class="info-box note-box"><h3>Megjegyzés</h3><p>${d.note}</p></div>` : ''}
+          </aside>
+        </div>
+      </details>`).join('');
+
+    dateJump.innerHTML = days.map(d=>`<a href="#${d.id}" data-city="${d.city}"><b>${d.date.replace('Július ','júl. ').replace('Augusztus ','aug. ')}</b><span>${d.cityLabel}</span></a>`).join('');
+  }
+
+  function renderPacking() {
+    const root = document.getElementById('packingList');
+    let itemIndex = 0;
+    root.innerHTML = Object.entries(packingGroups).map(([group, items]) => `
+      <div class="check-group">
+        <h4>${group}</h4>
+        ${items.map(item => {
+          const id = `pack-${itemIndex++}`;
+          const checked = localStorage.getItem(id) === '1';
+          return `<label class="check-item ${checked ? 'checked' : ''}"><input type="checkbox" id="${id}" ${checked ? 'checked' : ''}><span>${item}</span></label>`;
+        }).join('')}
+      </div>`).join('');
+
+    root.querySelectorAll('input[type="checkbox"]').forEach(box => {
+      box.addEventListener('change', () => {
+        localStorage.setItem(box.id, box.checked ? '1' : '0');
+        box.closest('.check-item').classList.toggle('checked', box.checked);
+      });
+    });
+  }
+
+  renderDays();
+  renderPacking();
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.day-card').forEach(card => {
+        card.hidden = !(filter === 'all' || card.dataset.city === filter);
+      });
+      document.querySelectorAll('.date-jump a').forEach(link => {
+        link.hidden = !(filter === 'all' || link.dataset.city === filter);
+      });
+    });
+  });
+
+  document.getElementById('expandAll').addEventListener('click', () => {
+    document.querySelectorAll('.day-card:not([hidden])').forEach(card => card.open = true);
+  });
+  document.getElementById('collapseAll').addEventListener('click', () => {
+    document.querySelectorAll('.day-card:not([hidden])').forEach(card => card.open = false);
+  });
+</script>
+</body>
+</html>
