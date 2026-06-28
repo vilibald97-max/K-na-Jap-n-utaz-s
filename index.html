@@ -90,7 +90,7 @@
     .countdown-card strong { display:block; font-size: clamp(2rem, 5vw, 4.4rem); line-height: 1; margin-top: 8px; letter-spacing: -.05em; }
     .countdown-card p { margin: 16px 0 0; opacity: .9; }
 
-    .stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin: 24px auto 54px; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 24px auto 54px; }
     .stat { padding: 18px; border-radius: 18px; background: rgba(255,253,248,.75); border: 1px solid var(--line); }
     .stat strong { display:block; font-size: 1.65rem; line-height: 1; margin-bottom: 8px; letter-spacing: -.03em; }
     .stat span { color: var(--muted); font-size: .9rem; font-weight: 650; }
@@ -122,7 +122,7 @@
     .timeline { position: relative; margin-top: 26px; }
     .timeline::before { content:""; position:absolute; left: 30px; top: 12px; bottom: 12px; width: 2px; background: linear-gradient(var(--red), var(--jade)); opacity: .25; }
     .day-card {
-      position: relative; margin: 0 0 20px 70px; border-radius: var(--radius); border: 1px solid var(--line); background: rgba(255,253,248,.92); box-shadow: 0 10px 30px rgba(52,37,21,.06); overflow: clip;
+      position: relative; margin: 0 0 20px 70px; border-radius: var(--radius); border: 1px solid var(--line); background: rgba(255,253,248,.92); box-shadow: 0 10px 30px rgba(52,37,21,.06); overflow: hidden;
     }
     .day-card[hidden] { display: none; }
     .day-card::before {
@@ -265,7 +265,7 @@
       <div class="container">
         <span class="eyebrow">🌏 Közös útiterv · 2026. július 19. – augusztus 3.</span>
         <h1>Kína és Japán,<br>egy útvonalon.</h1>
-        <p class="hero-copy">Peking császári emlékeitől Tokió nyüzsgésén és Kiotó templomain át Shanghai felhőkarcolóiig — minden nap, járat, szálloda és étterem egyetlen könnyen megosztható oldalon.</p>
+        <p class="hero-copy">Peking császári emlékeitől Tokió nyüzsgésén és Kiotó templomain át Shanghai felhőkarcolóiig — minden nap, járat, szálloda és étterem egyetlen könnyen m[...]</p>
 
         <div class="route-line" aria-label="Útvonal">
           <span class="route-city">Budapest</span><span class="route-arrow">→</span>
@@ -314,7 +314,6 @@
           <div class="stat"><strong>5</strong><span>szállásfoglalás</span></div>
           <div class="stat"><strong>2</strong><span>Shinkansen út</span></div>
           <div class="stat"><strong>4</strong><span>fő úti cél</span></div>
-          <div class="stat"><strong>$2.5–3.5k</strong><span>becsült teljes költségvetés</span></div>
         </div>
       </div>
     </section>
@@ -523,7 +522,7 @@
             <h3>🇯🇵 Tokió · éttermek</h3>
             <ol>
               <li>Ichiran Ramen</li><li>Omoide Yokocho</li><li>Tsukiji Sushi</li>
-              <li>Sumo Chanko</li><li>Senso-ji Temple Street</li>
+              <li>Senso-ji Temple Street</li>
             </ol>
           </div>
           <div class="panel span-3">
@@ -785,9 +784,9 @@
   const packingGroups = {
     '📄 Dokumentumok': ['Útlevél (érvényes)','Vízum / belépési dokumentumok','Repülő-, vonat- és szállásfoglalások','Utazási biztosítás dokumentumai','Bankkártyák (legalább 2)'],
     '🔌 Elektronika': ['Telefon + töltő','Laptop/tablet + töltő (opcionális)','Power bank','Univerzális adapter (220V AC)','Fülhallgató'],
-    '👕 Ruházat': ['T-shirt (5–6 db)','Rövidnadrág (2–3 db)','Könnyű hosszúnadrág (2 db)','Könnyű ruha (1–2 db)','Pulóver/sweatshirt az erős klímához','Könnyű kabát/hoodie','Kényelmes cipők','Fehérnemű és zokni (7–8 db)'],
+    '👕 Ruházat': ['T-shirt (5–6 db)','Rövidnadrág (2–3 db)','Könnyű hosszúnadrág (2 db)','Könnyű ruha (1–2 db)','Pulóver/sweatshirt az erős klímához','Könnyű kabát/hoodie'],
     '🧴 Higiénia és egészség': ['Fogkefe + fogkrém','Utazó méretű sampon','Dezodor','Naptej SPF 50+','Szúnyogriasztó','Láz-, hasmenés- és fájdalomcsillapító','Szanitáris kellékek'],
-    '🎒 Egyéb': ['Kis hátizsák','Utazási párna','Szemmaszk és füldugó','GoPro vagy kamera (opcionális)','Nemzetközi jogosítvány (opcionális)','Újratölthető italos palack','Napszemüveg és sapka','Könnyű esőkabát']
+    '🎒 Egyéb': ['Kis hátizsák','Utazási párna','Szemmaszk és füldugó','GoPro vagy kamera (opcionális)','Nemzetközi jogosítvány (opcionális)','Újratölthető italos palack','Napszemüveg']
   };
 
   function renderDays() {
